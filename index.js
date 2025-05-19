@@ -20,6 +20,7 @@ app.get("/", (req, res)=>{
 app.get("/new-image", (req, res)=>{
   // 1. Teneis que renderizar una vista new-image.ejs donde aparezca un formulario para que el usuario rellene los datos que pide la práctica. 
   // Yo implementaré el título y la URL
+  res.render("add-image.ejs");
 
 });
 
@@ -27,6 +28,16 @@ app.get("/new-image", (req, res)=>{
 app.post("/new-image", (req, res)=>{
   // Recibir los datos del formulario y actualizar el array "photos"
   // Para comprobar que lo has hecho bien muestra por consola el contenido del array photos después de actualizarlo
+  //  Disponemos de un objeto en req.body donde tendremos todos los valores
+  // de la petición POST (lo que nos viene del formulario)
+  photos.push({
+    title: req.body.title,
+    url: req.body.url
+  });
+
+  console.log("Array de fotos actualizado: ", photos);
+
+  res.send("Imagen añadida correctamente a la galería.");
 });
 
 // Iniciar el servidor
