@@ -11,6 +11,13 @@
 
 <body>
     <main>
+        <!-- Mostrar un mensaje u otro en función de si ya hay imágenes en la "base de datos" -->
+         <% if(images.length == 0){ %> <!-- Si no hay imágenes, mostrar un HTML animando al usuario a subir imágenes-->
+            <p>Todavía no hay imágenes en tu galería. ¡Añade una ahora!</p>
+          <% } else{ %>  <!-- Mostrar el número de imágenes que hay en la galería -->
+            <p>Tu galería tiene X imágenes</p>
+         <% } %>
+
         <section class="container grid">
             <!-- Generar tantos article como imágenes hay en la "base de datos"-->
             <% images.forEach(function(i) { %>
