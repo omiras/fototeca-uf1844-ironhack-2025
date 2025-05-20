@@ -22,7 +22,9 @@ app.get("/", (req, res)=>{
 app.get("/new-image", (req, res)=>{
   // 1. Teneis que renderizar una vista new-image.ejs donde aparezca un formulario para que el usuario rellene los datos que pide la práctica. 
   // Yo implementaré el título y la URL
-  res.render("add-image.ejs");
+  res.render("add-image.ejs", {
+    message: undefined // no tengo nada que informar al usuario por el momento
+  });
 
 });
 
@@ -39,7 +41,9 @@ app.post("/new-image", (req, res)=>{
 
   console.log("Array de imágenes actualizado: ", images);
 
-  res.send("Imagen añadida correctamente a la galería.");
+  res.render("add-image.ejs", {
+    message: "La imagen se ha añadido correctamente"
+  });
 });
 
 // Iniciar el servidor

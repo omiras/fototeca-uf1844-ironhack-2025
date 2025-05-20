@@ -17,6 +17,11 @@
         <input type="text" name="url" id="url">
         <input type="submit" value="Añadir Foto">
     </form>
+    <% if (message) { %>
+    <section>
+        <p><%= message %></p>     
+    </section>
+    <%  } %>
 </body>
 
 </html>
