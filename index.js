@@ -13,11 +13,13 @@ app.use(express.static('public'));
 // Array de fotos (base de datos actual)
 const images = [];
 
+
 app.get("/", (req, res)=>{
     res.render("home.ejs", {
       images : images
     });
 });
+
 
 app.get("/new-image", (req, res)=>{
   // 1. Teneis que renderizar una vista new-image.ejs donde aparezca un formulario para que el usuario rellene los datos que pide la práctica. 
@@ -36,7 +38,7 @@ app.post("/new-image", (req, res)=>{
   // de la petición POST (lo que nos viene del formulario)
   images.push({
     title: req.body.title,
-    url: req.body.url
+    url: req.body.url,
   });
 
   console.log("Array de imágenes actualizado: ", images);

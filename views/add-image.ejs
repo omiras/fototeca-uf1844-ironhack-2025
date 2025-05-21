@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <!-- Carga el fichero partials/navbar.ejs -->
+    <%- include('./partials/navbar') %>
+    
     <h1>Add New Image</h1>
     <form class="container" action="/new-image" method="post">
         <label for="title">Título: </label>

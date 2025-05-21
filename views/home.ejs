@@ -5,28 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Gallery</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 
 </head>
 
 <body>
+    <!-- Carga el fichero partials/navbar.ejs -->
+    <%- include('./partials/navbar') %>
     <main>
         <!-- Mostrar un mensaje u otro en función de si ya hay imágenes en la "base de datos" -->
-         <% if(images.length == 0){ %> <!-- Si no hay imágenes, mostrar un HTML animando al usuario a subir imágenes-->
+        <% if(images.length==0){ %> <!-- Si no hay imágenes, mostrar un HTML animando al usuario a subir imágenes-->
             <p>Todavía no hay imágenes en tu galería. ¡Añade una ahora!</p>
-          <% } else{ %>  <!-- Mostrar el número de imágenes que hay en la galería -->
-            <p>Tu galería tiene X imágenes</p>
-         <% } %>
+            <% } else{ %> <!-- Mostrar el número de imágenes que hay en la galería -->
+                <p>Tu galería tiene X imágenes</p>
+                <% } %>
 
-        <section class="container grid">
-            <!-- Generar tantos article como imágenes hay en la "base de datos"-->
-            <% images.forEach(function(i) { %>
-            <article>
-                <p><%= i.title %></p>
-                <img src="<%= i.url %>" alt="<%= i.title %>">
-            </article>
-            <%  }) %>
-        </section>
+                    <section class="container grid">
+                        <!-- Generar tantos article como imágenes hay en la "base de datos"-->
+                        <% images.forEach(function(i) { %>
+                            <article>
+                                <p>
+                                    <%= i.title %>
+                                </p>
+                                <img src="<%= i.url %>" alt="<%= i.title %>">
+                            </article>
+                            <% }) %>
+                    </section>
     </main>
 </body>
 
