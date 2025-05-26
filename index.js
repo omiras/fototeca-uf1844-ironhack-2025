@@ -7,6 +7,9 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
+// establecer el motor de plantillas por defecto
+app.set('view engine', 'ejs');
+
 // Oye, si te hacen una petición GET, mira si tienes alguno de los recursos que te piden en el directorio 'public'
 app.use(express.static('public'));
 
@@ -46,6 +49,18 @@ app.post("/new-image", (req, res)=>{
   res.render("add-image.ejs", {
     message: "La imagen se ha añadido correctamente"
   });
+});
+
+// Endpoint para comprobar si una URL ya existe en la fototeca
+app.get('/check-url', (req, res) => {
+  const url = req.query.url;
+  const exists = images.some(img => img.url === url);
+  res.json({ exists });
+});
+
+// Middleware para manejar rutas no encontradas (404)
+app.use((req, res) => {
+  res.status(404).render('404');
 });
 
 // Iniciar el servidor
