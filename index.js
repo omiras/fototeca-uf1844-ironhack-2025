@@ -7,9 +7,6 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
-// establecer el motor de plantillas por defecto
-app.set('view engine', 'ejs');
-
 // Oye, si te hacen una petición GET, mira si tienes alguno de los recursos que te piden en el directorio 'public'
 app.use(express.static('public'));
 
@@ -60,7 +57,7 @@ app.get('/check-url', (req, res) => {
 
 // Middleware para manejar rutas no encontradas (404)
 app.use((req, res) => {
-  res.status(404).render('404');
+  res.status(404).render('404.ejs');
 });
 
 // Iniciar el servidor
