@@ -18,13 +18,38 @@
         <input type="text" name="title" id="title">
         <label for="url">URL: </label>
         <input type="text" name="url" id="url">
-        <input type="submit" value="Añadir Foto">
+        <span id="url-feedback" style="color: red;"></span>
+        <label for="description">Descripción: </label>
+        <textarea name="description" id="description" rows="3"></textarea>
+        <input type="submit" value="Añadir Foto" id="submit-btn">
     </form>
     <% if (message) { %>
     <section>
         <p><%= message %></p>     
     </section>
     <%  } %>
+    <script>
+        const urlInput = document.getElementById('url');
+        const feedback = document.getElementById('url-feedback');
+        const submitBtn = document.getElementById('submit-btn');
+        urlInput.addEventListener('blur', async () => {
+            const url = urlInput.value.trim();
+            if (!url) {
+                feedback.textContent = '';
+                submitBtn.disabled = false;
+                return;
+            }
+            const res = await fetch(`/check-url?url=${encodeURIComponent(url)}`);
+            const data = await res.json();
+            if (data.exists) {
+                feedback.textContent = 'Esta URL ya existe en la fototeca.';
+                submitBtn.disabled = true;
+            } else {
+                feedback.textContent = '';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
 </body>
 
 </html>

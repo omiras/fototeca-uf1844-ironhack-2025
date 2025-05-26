@@ -30,14 +30,20 @@ app.get("/new-image", (req, res)=>{
 
 });
 
+// Endpoint para comprobar si una URL ya existe en la fototeca
+app.get('/check-url', (req, res) => {
+  const url = req.query.url;
+  // Comprobar si la URL ya existe en el array de imágenes
+  const exists = images.some(img => img.url === url);
+  res.json({ exists });
+});
+
 // Necesitamos un endpoint donde enviar los datos del formulario. Endpoint donde enviar los datos del formulario
 app.post("/new-image", (req, res)=>{
   // Recibir los datos del formulario y actualizar el array "images"
-  // Para comprobar que lo has hecho bien muestra por consola el contenido del array images después de actualizarlo
-  //  Disponemos de un objeto en req.body donde tendremos todos los valores
-  // de la petición POST (lo que nos viene del formulario)
   images.push({
     title: req.body.title,
+    description: req.body.description,
     url: req.body.url,
   });
 
