@@ -54,13 +54,6 @@ app.post("/new-image", (req, res)=>{
 
 
 
-// Endpoint para comprobar si una URL ya existe en la fototeca
-app.get('/check-url', (req, res) => {
-  const url = req.query.url;
-  const exists = images.some(img => img.url === url);
-  res.json({ exists });
-});
-
 // Middleware para manejar rutas no encontradas (404)
 app.use((req, res) => {
   res.status(404).render('404.ejs');
