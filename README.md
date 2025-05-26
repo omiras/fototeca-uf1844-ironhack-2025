@@ -5,7 +5,6 @@ Una pequeña aplicación web de galería de imágenes desarrollada con Node.js, 
 ## Características
 
 - Añade imágenes con título, descripción y URL.
-- Comprueba en tiempo real si la URL ya existe antes de añadir una nueva imagen.
 - Vista moderna y responsive gracias a PicoCSS.
 - Página de error 404 personalizada para rutas no existentes.
 - Registro de peticiones HTTP con morgan.
@@ -44,7 +43,6 @@ views/                # Vistas EJS
 
 - `/`                - Página principal con la galería de imágenes
 - `/new-image`       - Formulario para añadir una nueva imagen
-- `/check-url`       - Endpoint para comprobar si una URL ya existe (usado por AJAX)
 
 ## Notas
 
