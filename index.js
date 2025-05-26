@@ -52,6 +52,8 @@ app.post("/new-image", (req, res)=>{
   });
 });
 
+
+
 // Endpoint para comprobar si una URL ya existe en la fototeca
 app.get('/check-url', (req, res) => {
   const url = req.query.url;
