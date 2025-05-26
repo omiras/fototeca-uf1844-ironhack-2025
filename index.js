@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 
 const app = express();
 const PORT = 3000;
@@ -9,6 +10,9 @@ app.use(express.urlencoded({ extended: true}));
 
 // Oye, si te hacen una petición GET, mira si tienes alguno de los recursos que te piden en el directorio 'public'
 app.use(express.static('public'));
+
+// Usamos el middleware morgan para registrar todas las peticiones que vienen del cliente
+app.use(morgan("dev")); 
 
 // Array de fotos (base de datos actual)
 const images = [];
