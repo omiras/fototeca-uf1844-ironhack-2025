@@ -40,9 +40,16 @@ app.post("/new-image", (req, res)=>{
   // Para comprobar que lo has hecho bien muestra por consola el contenido del array images después de actualizarlo
   //  Disponemos de un objeto en req.body donde tendremos todos los valores
   // de la petición POST (lo que nos viene del formulario)
+
+  // Usar el módul de terceros get-dominant-color para obtener el color (o colores) predominantes de la imagen y lo guardas en una variable
+  
+  let dominantColor;
+  // dominantColor = get-dominant-color(req.body.url)
+
   images.push({
     title: req.body.title,
     url: req.body.url,
+    dominantColor: dominantColor
   });
 
   console.log("Array de imágenes actualizado: ", images);
